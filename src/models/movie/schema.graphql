@@ -1,0 +1,106 @@
+extend type Query {
+  movie(id: ID!): Movie_detailed!
+}
+
+type Movie_detailed {
+  adult: Boolean
+  backdrop_path: String
+  belongs_to_collection: String
+  budget: Int
+  genres: [Genres]
+  homepage: String
+  id: Int
+  imdb_id: String
+  original_language: String
+  original_title: String
+  overview: String
+  popularity: Float
+  poster_path: String
+  production_companies: [Production_companies]
+  production_countries: [Production_countries]
+  release_date: String
+  revenue: Int
+  runtime: Int
+  spoken_languages: [Spoken_languages]
+  status: String
+  tagline: String
+  title: String
+  video: Boolean
+  vote_average: Float
+  vote_count: Int
+  credits: Credits
+  videos: [Video]
+  reviews: [Review]
+  similar: Similar
+}
+
+type Genres {
+  id: Int
+  name: String
+}
+
+type Production_companies {
+  name: String
+  id: Int
+  logo_path: String
+  origin_country: String
+}
+
+type Production_countries {
+  iso_3166_1: String
+  name: String
+}
+
+type Spoken_languages {
+  iso_639_1: String
+  name: String
+}
+
+type Similar {
+  page: Int
+  results: [Movie]
+}
+
+type Credits {
+  crew: [Crew_Credit],
+  cast: [Cast_Credit]
+}
+
+type Cast_Credit {
+  cast_id: Int
+  character: String
+  credit_id: String
+  gender: Int
+  id: Int
+  name: String
+  order: Int 
+  profile_path: String
+}
+
+type Crew_Credit {
+  credit_id: String
+  department: String
+  gender: Int
+  id: Int
+  job: String
+  name: String
+  profile_path: String
+}
+
+type Video {
+  id: String
+  iso_639_1: String
+  iso_3166_1: String
+  key: String
+  name: String
+  site: String
+  size: Int
+  type: String
+}
+
+type Review {
+  id: String
+  author: String
+  content: String
+  url: String
+}

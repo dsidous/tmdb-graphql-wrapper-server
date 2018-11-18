@@ -1,0 +1,25 @@
+extend type Query {
+  movies(query: String): [Movie!]
+}
+
+type Movie {
+  id: ID!
+  title: String!
+  poster_path: String
+  adult: Boolean
+  overview: String
+  release_date: String
+  genre_ids: [Int]
+  genre_names: Genre_names
+  original_title: String
+  original_language: String
+  backdrop_path: String 
+  popularity: Float
+  vote_count: Int
+  video: Boolean
+  vote_average: Float
+}
+
+type Genre_names {
+  genre_name: [String]
+}
