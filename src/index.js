@@ -32,7 +32,8 @@ const graphQLOptions = ({
   dataSources: () => ({
     moviesService: new MoviesService(),
   }),
-  introspection: true
+  introspection: true,
+  playground: true,
 });
 const server = new ApolloServer(graphQLOptions);
 
