@@ -4,7 +4,6 @@ const gql = require('graphql-tag');
 const glob = require('glob');
 const path = require('path');
 require('dotenv').config();
-const APIKEY = process.env.API_KEY;
 
 const MoviesService = require('./service/api');
 const resolvers = require('./resolvers');
@@ -24,7 +23,7 @@ const typeDefs = [
     .map(schema => gql(fs.readFileSync(schema, 'utf8'))),
 ];
 
-const context = { apiKey: APIKEY };
+const context = ({ req }) => ({ apikey: req.headers.apikey, });
 const options = { port: process.env.PORT || 4040 };
 const graphQLOptions = ({
   context,

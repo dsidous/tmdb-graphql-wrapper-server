@@ -7,7 +7,7 @@ class MoviesService extends RESTDataSource {
   }
 
   willSendRequest(request) {
-    request.params.set('api_key', this.context.apiKey);
+    request.params.set('api_key', this.context.apikey);
   }
 
   async getMovies(query) {
