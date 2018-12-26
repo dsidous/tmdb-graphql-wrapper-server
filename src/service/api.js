@@ -11,28 +11,28 @@ class MoviesService extends RESTDataSource {
   }
 
   async getMovies(query) {
-    const {results} = await this.get(`discover/movie?${query}`);
-    return results;    
+    const { results } = await this.get(`discover/movie?${query}`);
+    return results;
   }
 
   async getMovie(id) {
     const data = await this.get(`movie/${id}?append_to_response=credits,similar,videos,reviews`);
     const {
-        videos:{results:videos}, 
-        reviews:{results:reviews}
+      videos: { results: videos },
+      reviews: { results: reviews }
     } = data;
-    return {...data, videos, reviews};
+    return { ...data, videos, reviews };
   }
 
   async getPerson(id) {
     const data = await this.get(`person/${id}?append_to_response=movie_credits,tv_credits,images`);
-    const {images:{profiles:images}} = data;    
-    return {...data, images}
+    const { images: { profiles: images } } = data;
+    return { ...data, images }
   }
 
   async getGenreNames(ids) {
     const data = await this.get(`genre/movie/list`);
-    const ret = { genre_name: [].concat(...ids.map(genreId => data.genres.filter(genre => genre.id === genreId).map(g =>  g.name)))};
+    const ret = { genre_name: [].concat(...ids.map(genreId => data.genres.filter(genre => genre.id === genreId).map(g => g.name))) };
     return ret;
   }
 
@@ -43,6 +43,11 @@ class MoviesService extends RESTDataSource {
 
   async getTvSeason(id, season) {
     const data = await this.get(`tv/${id}/season/${season}`);
+    return data;
+  }
+
+  async getConfig() {
+    const data = await this.get(`configuration`);
     return data;
   }
 

@@ -1,0 +1,18 @@
+extend type Query {
+  config: Config!
+}
+
+type Config {
+  images: Images
+  change_keys: [String]
+}
+
+type Images {
+  base_url: String
+  secure_base_url: String
+  backdrop_sizes: [String]
+  logo_sizes: [String]
+  poster_sizes: [String]
+  profile_sizes: [String]
+  still_sizes: [String]
+}
