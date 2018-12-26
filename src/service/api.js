@@ -16,7 +16,7 @@ class MoviesService extends RESTDataSource {
   }
 
   async getMovie(id) {
-    const data = await this.get(`movie/${id}?append_to_response=credits,similar,videos,reviews`);
+    const data = await this.get(`movie/${id}?append_to_response=credits,images,similar,videos,reviews`);
     const {
       videos: { results: videos },
       reviews: { results: reviews }

@@ -32,6 +32,7 @@ type Movie_detailed {
   videos: [Video]
   reviews: [Review]
   similar: Similar
+  images: Images
 }
 
 type Genres {
@@ -103,4 +104,19 @@ type Review {
   author: String
   content: String
   url: String
+}
+
+type Images {
+  backdrops: [ImageSpec]
+  posters: [ImageSpec]
+}
+
+type ImageSpec {
+  aspect_ratio: Float
+  file_path: String
+  height: Int
+  iso_639_1: Int
+  vote_average: Float
+  vote_count: Int
+  width: Int  
 }
