@@ -32,7 +32,7 @@ type Movie_detailed {
   videos: [Video]
   reviews: [Review]
   similar: Similar
-  images: Images
+  images: Movie_images
 }
 
 type Genres {
@@ -106,7 +106,7 @@ type Review {
   url: String
 }
 
-type Images {
+type Movie_images {
   backdrops: [ImageSpec]
   posters: [ImageSpec]
 }
