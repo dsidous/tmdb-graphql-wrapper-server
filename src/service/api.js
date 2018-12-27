@@ -51,6 +51,11 @@ class MoviesService extends RESTDataSource {
     return data;
   }
 
+  async getTopPeople(query) {
+    const { results } = await this.get(`person/popular?${query}`);
+    return results;
+  }
+
 }
 
 module.exports = MoviesService;

@@ -20,7 +20,11 @@ const resolvers = {
       const { id, season } = args;
       return dataSources.moviesService.getTvSeason(id, season);
     },
-    config: (_, __, { dataSources }) => dataSources.moviesService.getConfig()
+    config: (_, __, { dataSources }) => dataSources.moviesService.getConfig(),
+    topPeople: (parent, args, { dataSources }) => {
+      const { query } = args;
+      return dataSources.moviesService.getTopPeople(query);
+    }
   },
   Movie: {
     genre_names: (parent, args, { dataSources }) => dataSources.moviesService.getGenreNames(parent.genre_ids)

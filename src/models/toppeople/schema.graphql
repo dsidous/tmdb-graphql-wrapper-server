@@ -1,0 +1,10 @@
+extend type Query {
+  topPeople(query: String): [Top_person!]
+}
+
+type Top_person {
+  id: ID!
+  name: String
+  profile_path: String
+  popularity: Float
+}
