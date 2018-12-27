@@ -8,6 +8,18 @@ const resolvers = {
       const { query } = args;
       return dataSources.moviesService.getMovies(query);
     },
+    popular: (parent, args, { dataSources }) => {
+      const { query } = args;
+      return dataSources.moviesService.getPopularMovies(query);
+    },
+    nowplaying: (parent, args, { dataSources }) => {
+      const { query } = args;
+      return dataSources.moviesService.getNowPlayingMovies(query);
+    },
+    upcoming: (parent, args, { dataSources }) => {
+      const { query } = args;
+      return dataSources.moviesService.getUpcomingMovies(query);
+    },
     person: (parent, args, { dataSources }) => {
       const { id } = args;
       return dataSources.moviesService.getPerson(id);

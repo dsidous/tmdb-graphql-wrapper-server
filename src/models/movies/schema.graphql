@@ -1,5 +1,8 @@
 extend type Query {
   movies(query: String): [Movie!]
+  popular(query: String): [Movie!]
+  nowplaying(query: String): [Movie!]
+  upcoming(query: String): [Movie!]
 }
 
 type Movie {

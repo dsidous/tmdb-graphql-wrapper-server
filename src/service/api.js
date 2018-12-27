@@ -56,6 +56,21 @@ class MoviesService extends RESTDataSource {
     return results;
   }
 
+  async getPopularMovies(query) {
+    const { results } = await this.get(`movie/popular?${query}`);
+    return results;
+  }
+
+  async getNowPlayingMovies(query) {
+    const { results } = await this.get(`movie/now_playing?${query}`);
+    return results;
+  }
+
+  async getUpcomingMovies(query) {
+    const { results } = await this.get(`movie/upcoming?${query}`);
+    return results;
+  }
+
 }
 
 module.exports = MoviesService;
