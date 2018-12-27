@@ -36,7 +36,8 @@ const resolvers = {
     topPeople: (parent, args, { dataSources }) => {
       const { query } = args;
       return dataSources.moviesService.getTopPeople(query);
-    }
+    },
+    genres: (_, __, { dataSources }) => dataSources.moviesService.getGenres()
   },
   Movie: {
     genre_names: (parent, args, { dataSources }) => dataSources.moviesService.getGenreNames(parent.genre_ids)
