@@ -1,3 +1,5 @@
+const { resolveKey } = require('./utils');
+
 const resolvers = {
   Query: {
     movie: async (parent, args, { dataSources }) => {
@@ -45,6 +47,10 @@ const resolvers = {
   },
   Movie: {
     genre_names: (parent, args, { dataSources }) => dataSources.moviesService.getGenreNames(parent.genre_ids)
+  },
+  Tv: {
+    title: resolveKey('name'),
+    release_date: resolveKey('first_air_date')
   }
 };
 

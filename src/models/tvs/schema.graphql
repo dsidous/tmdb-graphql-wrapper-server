@@ -4,11 +4,12 @@ extend type Query {
 
 type Tv {
   id: ID!
-  name: String!
+  title: String!
   poster_path: String
   overview: String
-  first_air_date: String
+  release_date: String
   genre_ids: [Int]
+  genre_names: Genre_names
   backdrop_path: String 
   popularity: Float
   vote_count: Int
