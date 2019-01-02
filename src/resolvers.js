@@ -32,6 +32,10 @@ const resolvers = {
       const { id, season } = args;
       return dataSources.moviesService.getTvSeason(id, season);
     },
+    tvs: (parent, args, { dataSources }) => {
+      const { query } = args;
+      return dataSources.moviesService.getTvs(query);
+    },
     config: (_, __, { dataSources }) => dataSources.moviesService.getConfig(),
     topPeople: (parent, args, { dataSources }) => {
       const { query } = args;

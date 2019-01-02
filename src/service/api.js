@@ -46,6 +46,11 @@ class MoviesService extends RESTDataSource {
     return data;
   }
 
+  async getTvs(query) {
+    const { results } = await this.get(`discover/tv?${query}`);
+    return results;
+  }
+
   async getConfig() {
     const data = await this.get(`configuration`);
     return data;

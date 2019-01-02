@@ -1,0 +1,16 @@
+extend type Query {
+  tvs(query: String): [Tv!]
+}
+
+type Tv {
+  id: ID!
+  name: String!
+  poster_path: String
+  overview: String
+  first_air_date: String
+  genre_ids: [Int]
+  backdrop_path: String 
+  popularity: Float
+  vote_count: Int
+  vote_average: Float
+}

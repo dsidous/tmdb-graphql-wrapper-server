@@ -1,8 +1,8 @@
 extend type Query {
-  tv(id:ID!): TV!
+  tv(id:ID!): Tv_detailed!
 }
 
-type TV {
+type Tv_detailed {
   backdrop_path: String
   created_by: [Created_By]
   episode_run_time: [Int]
