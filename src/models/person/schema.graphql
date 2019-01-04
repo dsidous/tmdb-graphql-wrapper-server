@@ -17,6 +17,7 @@ type Person {
   adult: Boolean
   imdb_id: String
   homepage: String
+  combined_credits: Person_Credits
   movie_credits: Person_Movie_Credits
   tv_credits: Person_Tv_Credits
   images: [Profile_Image]
@@ -44,6 +45,7 @@ type Person_Movie_Cast_Credit {
   backdrop_path: String
   overview: String
   poster_path: String 
+  media_type: String
 }
 
 type Person_Movie_Crew_Credit {
@@ -64,6 +66,7 @@ type Person_Movie_Crew_Credit {
   adult: Boolean
   release_date: String
   credit_id: String
+  media_type: String
 }
 
 type Person_Tv_Credits {
@@ -88,6 +91,7 @@ type Person_Tv_Cast_Credit {
   backdrop_path: String
   overview: String
   origin_country: [String]
+  media_type: String
 }
 
 type Person_Tv_Crew_Credit {
@@ -108,7 +112,16 @@ type Person_Tv_Crew_Credit {
   vote_average: Float
   poster_path: String
   credit_id: String
+  media_type: String
 }
+
+type Person_Credits {
+  cast: [Person_Cast_Credit]
+  crew: [Person_Crew_Credit]
+}
+
+union Person_Cast_Credit = Person_Movie_Cast_Credit | Person_Tv_Cast_Credit
+union Person_Crew_Credit = Person_Movie_Crew_Credit | Person_Tv_Crew_Credit
 
 type Profile_Image {
   aspect_ratio: Float

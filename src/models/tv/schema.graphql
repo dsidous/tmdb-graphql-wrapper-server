@@ -32,6 +32,10 @@ type Tv_detailed {
   vote_average: Float
   vote_count: Int
   credits: Credits
+  videos: [Video]
+  reviews: [Review]
+  similar: Similar_tv
+  images: Movie_images
 }
 
 type Created_By {
@@ -71,4 +75,9 @@ type Season {
   overview: String
   poster_path: String
   season_number: Int
+}
+
+type Similar_tv {
+  page: Int
+  results: [Tv]
 }

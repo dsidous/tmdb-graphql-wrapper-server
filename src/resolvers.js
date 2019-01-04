@@ -51,7 +51,33 @@ const resolvers = {
   Tv: {
     title: resolveKey('name'),
     release_date: resolveKey('first_air_date')
-  }
+  },
+  Person_Cast_Credit: {
+      __resolveType(obj, context, info){
+        if(obj.name){
+          return 'Person_Tv_Cast_Credit';
+        }
+
+        if(obj.title){
+          return 'Person_Movie_Cast_Credit';
+        }
+
+        return null;
+      },
+  },
+  Person_Crew_Credit: {
+    __resolveType(obj, context, info){
+      if(obj.name){
+        return 'Person_Tv_Crew_Credit';
+      }
+
+      if(obj.title){
+        return 'Person_Movie_Crew_Credit';
+      }
+
+      return null;
+    },
+}    
 };
 
 module.exports = resolvers;

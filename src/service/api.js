@@ -25,7 +25,7 @@ class MoviesService extends RESTDataSource {
   }
 
   async getPerson(id) {
-    const data = await this.get(`person/${id}?append_to_response=movie_credits,tv_credits,images`);
+    const data = await this.get(`person/${id}?append_to_response=movie_credits,tv_credits,combined_credits,images`);
     const { images: { profiles: images } } = data;
     return { ...data, images }
   }
@@ -37,8 +37,12 @@ class MoviesService extends RESTDataSource {
   }
 
   async getTv(id) {
-    const data = await this.get(`tv/${id}?append_to_response=credits,images`);
-    return data
+    const data = await this.get(`tv/${id}?append_to_response=credits,images,reviews,videos,similar`);
+    const {
+      videos: { results: videos },
+      reviews: { results: reviews }
+    } = data;
+    return { ...data, videos, reviews };
   }
 
   async getTvSeason(id, season) {
