@@ -43,41 +43,43 @@ const resolvers = {
       const { query } = args;
       return dataSources.moviesService.getTopPeople(query);
     },
-    genres: (_, __, { dataSources }) => dataSources.moviesService.getGenres()
+    genres: (_, __, { dataSources }) => dataSources.moviesService.getGenres(),
+    genresTv: (_, __, { dataSources }) => dataSources.moviesService.getTvGenres()
   },
   Movie: {
     genre_names: (parent, args, { dataSources }) => dataSources.moviesService.getGenreNames(parent.genre_ids)
   },
   Tv: {
     title: resolveKey('name'),
-    release_date: resolveKey('first_air_date')
+    release_date: resolveKey('first_air_date'),
+    genre_names: (parent, args, { dataSources }) => dataSources.moviesService.getTvGenreNames(parent.genre_ids)
   },
   Person_Cast_Credit: {
-      __resolveType(obj, context, info){
-        if(obj.name){
-          return 'Person_Tv_Cast_Credit';
-        }
+    __resolveType(obj, context, info) {
+      if (obj.name) {
+        return 'Person_Tv_Cast_Credit';
+      }
 
-        if(obj.title){
-          return 'Person_Movie_Cast_Credit';
-        }
+      if (obj.title) {
+        return 'Person_Movie_Cast_Credit';
+      }
 
-        return null;
-      },
+      return null;
+    },
   },
   Person_Crew_Credit: {
-    __resolveType(obj, context, info){
-      if(obj.name){
+    __resolveType(obj, context, info) {
+      if (obj.name) {
         return 'Person_Tv_Crew_Credit';
       }
 
-      if(obj.title){
+      if (obj.title) {
         return 'Person_Movie_Crew_Credit';
       }
 
       return null;
     },
-}    
+  }
 };
 
 module.exports = resolvers;

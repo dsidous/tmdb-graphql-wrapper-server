@@ -1,3 +1,4 @@
 extend type Query {
   genres: [Genres!]!
+  genresTv: [Genres!]!
 }

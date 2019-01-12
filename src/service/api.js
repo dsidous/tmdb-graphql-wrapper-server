@@ -36,6 +36,12 @@ class MoviesService extends RESTDataSource {
     return ret;
   }
 
+  async getTvGenreNames(ids) {
+    const data = await this.get(`genre/tv/list`);
+    const ret = { genre_name: [].concat(...ids.map(genreId => data.genres.filter(genre => genre.id === genreId).map(g => g.name))) };
+    return ret;
+  }
+
   async getTv(id) {
     const data = await this.get(`tv/${id}?append_to_response=credits,images,reviews,videos,similar`);
     const {
@@ -62,6 +68,11 @@ class MoviesService extends RESTDataSource {
 
   async getGenres() {
     const { genres } = await this.get(`genre/movie/list`);
+    return genres;
+  }
+
+  async getTvGenres() {
+    const { genres } = await this.get(`genre/tv/list`);
     return genres;
   }
 
